@@ -1,0 +1,11 @@
+.wdg_planet{padding:20px 10px;height:270px;overflow-y:auto;}
+.wdg_planet li{list-style:none;font-size:11px;margin-bottom:5px;min-height:60px;overflow:hidden;}
+.wdg_planet .thumb{float:left;border:1px solid #eee;width:50px;height:50px;background:#eee;text-align:center;line-height:50px;border-radius:50px;margin-right:10px;color:#888;}
+.wdg_planet .thumb img{border-radius:50px;}
+.wdg_planet .name{color:#FF6640;}
+.wdg_planet .date{float:right;color:#ADA7A4;}
+.wdg_planet .text,
+.wdg_planet .text div{overflow:hidden;width:225px;display:inline-block;padding-top:1px;color:#777777;font-size:11px;}
+.nomargin{margin:0;padding:0}
+
+.lazy {-webkit-transition-property: opacity; -moz-transition-property: opacity; -o-transition-property: opacity; transition-property: opacity; -webkit-transition-duration: 0.3s; -moz-transition-duration: 0.3s; -o-transition-duration: 0.3s; transition-duration: 0.3s; -webkit-transition-timing-function: ease; -moz-transition-timing-function: ease; -o-transition-timing-function: ease; transition-timing-function: ease; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0); opacity: 0;}

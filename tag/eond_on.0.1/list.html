@@ -1,0 +1,27 @@
+<!--@if($coloset == "wdg")-->
+<style type="text/css">
+.wdg_planet{padding:20px 10px;height:270px;overflow-y:auto;}
+.wdg_planet li{list-style:none;font-size:11px;margin-bottom:5px;min-height:60px;overflow:hidden;}
+.wdg_planet .thumb{float:left;border:1px solid #eee;width:50px;height:50px;background:#eee;text-align:center;line-height:50px;border-radius:50px;margin-right:10px;color:#888;}
+.wdg_planet .thumb img{border-radius:50px;}
+.wdg_planet .name{color:#FF6640;}
+.wdg_planet .date{float:right;color:#ADA7A4;}
+.wdg_planet .text,
+.wdg_planet .text div{overflow:hidden;width:225px;display:inline-block;padding-top:1px;color:#777777;font-size:11px;}
+</style>
+<div class="wdg_planet">
+<!--@end-->
+	<ul>
+	<!--@foreach($planet_list as $no => $item)-->
+	<li>
+	<span class="thumb"><img src="{$item->getPlanetPhotoSrc($widget_info->thumbnail_width,$widget_info->thumbnail_height)}" width="{$widget_info->thumbnail_width}" height="{$widget_info->thumbnail_height}" alt="{htmlspecialchars($item->nick_name)}" /></span>
+	<!--@if($widget_info->show_author_name == 'Y')--><a href="{getSiteUrl($widget_info->domain,'','mid',$item->getPlanetMid())}"><span class="name">{$item->getNickName()}</span></a><!--@endif--><!--  onclick="return false;" class="member_{$item->getMemberSrl()}" -->
+	<span class="date"><!--@if(zdate($item->get('regdate'),"Ymd",false) == date(Ymd))-->오늘 {zdate($item->get('regdate'),"H:i",false)}<!--@else-->{zdate($item->get('regdate'),"y.m.d",false)}<!--@end--> <span class="blind">/{zdate($item->get('regdate'),"H:i",false)}</span></span>
+	<a href="{getSiteUrl($widget_info->domain,'','mid',$item->getPlanetMid(),'date',$item->getRegdate())}" class="author" title="{htmlspecialchars($item->nick_name)}"><span class="text">{$item->getContent()}</span></a>
+	<!--@if($widget_info->show_number_of_comments == 'Y')--><span class="cnt">{$lang->comment}:{$item->getCommentCount()} {$lang->cmd_planet_good}:{$item->getVotedCount()}</span><!--@endif-->
+	</li>
+	<!--@end-->
+	</ul>
+<!--@if($coloset == "wdg")-->
+</div>
+<!--@end-->
