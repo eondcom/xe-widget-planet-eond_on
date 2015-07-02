@@ -4,7 +4,7 @@
 	<description xml:lang="ko">
 		플래닛 글들을 출력하는 기본 위젯 스킨입니다.
 	</description>
-	<version>0.1</version>
+	<version>0.3</version>
 	<date>2015-06-29</date>
 	<link>http://eond.com</link>
 
@@ -12,11 +12,11 @@
 		<name xml:lang="ko">이온디</name>
 	</author>
 	<colorset>
-        <color name="layout">
-            <title xml:lang="ko">레이아웃에 맞춤</title>
-        </color>
 		<color name="wdg">
-            <title xml:lang="ko">기본 스킨</title>
-        </color>
+            <title xml:lang="ko">기본 스킨(권장)</title>
+		</color>
+		<color name="layout">
+            <title xml:lang="ko">레이아웃에 맞춤</title>
+		</color>
 	</colorset>
 </skin>

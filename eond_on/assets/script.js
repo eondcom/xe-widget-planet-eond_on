@@ -1,5 +1,7 @@
+jQuery(function($){
 
-var eventBridge = jQuery('<ul>');
+
+var eventBridge = $('<ul />');
 var eventDictionary = {
 	global : {
 		RESIZE : 'resize',
@@ -8,7 +10,7 @@ var eventDictionary = {
 	 }
 };
 function scrollTop(){
-	return jQuery(window).scrollTop();
+	return $(window).scrollTop();
 }
 
 function calcTop(elem){
@@ -69,13 +71,13 @@ function requestTick(ev) {
 	}
 }
 (function($){
-	jQuery.LazyLoadImages = function(){
+	$.LazyLoadImages = function(){
 		return {
 			lazy : [],
 			init : function(){
 				var self = this;
 				//Lazy loaded images
-				self.lazy = jQuery('.lazy');
+				self.lazy = $('.lazy');
 				self.lazy.attr('data-lazy-loaded', 'false');
 				self.scan();
 				self.bindEvents();
@@ -83,7 +85,7 @@ function requestTick(ev) {
 			scan : function(){
 				var len = this.lazy.length;
 				for(var i=0;i<len;i++){
-					var $elem = jQuery(this.lazy[i]);
+					var $elem = $(this.lazy[i]);
 					if($elem.attr('data-lazy-loaded') !== 'true' && this.isInView($elem)){
 						$elem.attr('data-lazy-loaded', 'true');
 						$elem.animate({'opacity':1});
@@ -96,7 +98,7 @@ function requestTick(ev) {
 					return false;	
 				}
 				var elemTop = calcTop(elem),
-					scrollBottom = jQuery(window).height()+scrollTop(),
+					scrollBottom = $(window).height()+scrollTop(),
 					threshold = 0;
 				if(elemTop < scrollBottom+threshold){
 					return true;
@@ -108,18 +110,20 @@ function requestTick(ev) {
 				eventBridge.on(eventDictionary.global.SCROLL, function(e){
 					self.scan();
 				});
-				jQuery(window).hover('scroll', throttle(function (e) {
+				$(window).hover('scroll', throttle(function (e) {
 					fireScroll = true;
 					if (typeof window.webkitRequestAnimationFrame !== 'undefined') {
 						requestTick();
 					} else {
 						eventBridge.trigger(jQuery.Event(eventDictionary.global.SCROLL)/*, metrics*/);
 					}
-				}, 50));
+				}, 250));
 			}
 		};
 	};
 }(jQuery));
-jQuery(document).ready(function(){
-	new jQuery.LazyLoadImages().init();
+$(document).ready(function(){
+	new $.LazyLoadImages().init();
+});
+
 });
